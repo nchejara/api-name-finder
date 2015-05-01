@@ -1,0 +1,26 @@
+{
+  "name": "api-name-finder",
+  "version": "0.0.4",
+  "description": "Helps to read APIs name from specific file.",
+  "author": "Naren Chejara <n.chejara@yahoo.com>",
+  "license": "MIT",
+  "main": "index.js",
+  "scripts": {
+    "test": "node index.js"
+  },
+  "kewords": [
+    "api",
+    "name",
+    "finder",
+    "name finder",
+    "api name finder",
+    "api finder"
+  ],
+  "bugs": {
+    "url": "https://github.com/nchejara/api-name-finder/issues"
+  },
+  "homepage": "https://github.com/nchejara/api-name-finder",
+  "dependencies": {
+    "fs": "0.0.2"
+  }
+}
