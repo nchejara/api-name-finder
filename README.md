@@ -12,58 +12,55 @@ npm install api-name-finder
 _Quick Start_
 ---
 
-**api-name-finder** is very easy to start and get all api name.  This module content 2 main tasks which help users to get API Names.
+**api-name-finder** modules is very easy to get start and find all api lists. This modules helps to read API files(specified by user) and fetch all APIs. This modules has 2 basic functions which helps to retrieve API lists and save them in file.
 
-1.  getAPINames: Fetch all API names and return a json object
-	
-	_usage:  getAPINames("filename", callback)_
-		
-	**params:**
-	_**filename**: require file name which content node API name (like route.js)._
-	_**callback**: Callback function should have 2 parameters; one for error holding and other for list of api. For example - function (err, apiLists){}. _
-		
-2. getAPINamesAndWriteInFile:  Fetch all api names and save all of them in a file.
-	
-	_usage: getAPINamesAndWriteInFile("readFilename", "saveFilename", callback)_
-	
-	**params:**
-	_**readFilename**: filename which content api names for read._
-	_**saveFilename**: filename where you want to save all api name._
-	_**callback**: Callback function should have 2 parameters; one for error holding and other for confirmation of data save. For example - function (err, isDataSave){}_
+1.***getAPIs*** function read and filter APIs from specified filesand returns a lists of APIs in json object. This function take 3 parameters: fileNames, filters and callback function.
 
-refer this example for your reference 
+***Usage:***
+```javascript
+apiFinder.getAPIs(filename, filter, function(err, lists){
+    if(err)
+        console.log(err);
+
+    console.dir(lists);
+});
+```
+
+***filename**: File name can be a single file or array of files.*
+***filter**: Filter APIs lists. filter ca be a string or array of string.*
+***callback**: a function that can hold err and apiLists.*
+		
+2.***getAndSaveAPIs** function is same as ***getAPIs*** function and it help to save all api lists in file.*
+ 
+***Usage:***
+```javascript
+apiFinder.getAndSaveAPIs(filename, "saveAPIList.txt", filterArray, function(err, isDataSaved){
+    if(err)
+        console.log(err)
+
+    if(isDataSaved)
+        console.log("Data saved successfully!");
+});
+});
+```
+
+Example for reference 
 ```javascript
 var apiFinder = require("api-name-finder");
 
-apiFinder.getAPINames("routes.js", function(err, lists){
+var fileArray = ["add your API filename"];
+var filterArray = ["Add your filter"];
+apiFinder.getAPIs(fileArray, filterArray, function(err, lists){
     if(err)
         console.log(err);
-    console.log("API from routes.js\n\n");
-    console.log(lists.listAllAPINames);
 
-})
-
-apiFinder.getAPINames("routes-reports.js", function(err, lists){
-    if(err)
-        console.log(err);
-    console.log("\nAPI from route-reports.js\n");
-    console.log(lists.listAllAPINames);
-    
+    console.dir(lists);
 });
-
-apiFinder.getAPINamesAndWriteInFile("routes1.js", "outRoute.txt", function(err, isDataSaved){
+apiFinder.getAndSaveAPIs(fileArray, "route.txt", filterArray, function(err, isDataSaved){
     if(err)
         console.log(err)
 
     if(isDataSaved)
         console.log("Data saved successfully!");
 });
-apiFinder.getAPINamesAndWriteInFile("routes-reports.js", "outRoutesReport.txt", function(err, isDataSaved){
-    if(err)
-        console.log(err)
-
-    if(isDataSaved)
-        console.log("Data saved successfully!");
-});
-
 ```

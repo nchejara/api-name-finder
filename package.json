@@ -1,6 +1,6 @@
 {
   "name": "api-name-finder",
-  "version": "0.1.0",
+  "version": "0.1.5",
   "description": "Helps to read APIs name from specific file.",
   "author": "Naren Chejara <n.chejara@yahoo.com>",
   "license": "MIT",
